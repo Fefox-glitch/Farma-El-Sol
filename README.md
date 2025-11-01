@@ -16,5 +16,4 @@ Farma-El-Sol
 
 ## Ramas y PR
 
-- Cambios de tipos y ajustes de editor están en la rama `trae-fix`.
-- Crea el Pull Request desde: `https://github.com/Fefox-glitch/Farma-El-Sol/compare/main...trae-fix?expand=1`.
+- Crea el Pull Request desde: `https://github.com/Fefox-glitch/Farma-El-Sol/compare/main`.
