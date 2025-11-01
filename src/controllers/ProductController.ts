@@ -24,6 +24,21 @@ export const useProductController = () => {
     }
   }, [selectedCategory, searchQuery]);
 
+  // Escucha cambios del catálogo desde administración para reflejar en la página de usuarios
+  useEffect(() => {
+    const handler = () => {
+      if (searchQuery) {
+        handleSearch(searchQuery);
+      } else if (selectedCategory) {
+        loadProductsByCategory(selectedCategory);
+      } else {
+        loadProducts();
+      }
+    };
+    window.addEventListener('products_changed', handler);
+    return () => window.removeEventListener('products_changed', handler);
+  }, [searchQuery, selectedCategory]);
+
   const loadCategories = async () => {
     try {
       const data = await CategoryModel.getAllCategories();

@@ -6,6 +6,9 @@ export const useCartController = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [loading, setLoading] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
+  const [reservation, setReservation] = useState<null | { buyer_code: string; seller_code: string; order_id: string; total: number; items: CartItem[]; buyer: { name: string; phone: string }; reserved_at: string; expires_at: string }>(null);
+  const [buyerName, setBuyerName] = useState('');
+  const [buyerPhone, setBuyerPhone] = useState('');
 
   useEffect(() => {
     loadCart();
@@ -55,6 +58,9 @@ export const useCartController = () => {
     try {
       await CartModel.clearCart();
       await loadCart();
+      setReservation(null);
+      setBuyerName('');
+      setBuyerPhone('');
     } catch (error) {
       console.error('Error clearing cart:', error);
     }
@@ -71,6 +77,17 @@ export const useCartController = () => {
     return cartItems.reduce((count, item) => count + item.quantity, 0);
   };
 
+  const checkout = async () => {
+    try {
+      const result = await CartModel.createReservation({ name: buyerName.trim(), phone: buyerPhone.trim() });
+      setReservation({ buyer_code: result.buyer_code, seller_code: result.seller_code, order_id: result.order_id, total: result.total, items: result.items, buyer: result.buyer, reserved_at: result.reserved_at, expires_at: result.expires_at });
+      await loadCart(); // carrito queda vacío
+      setIsCartOpen(true);
+    } catch (error) {
+      console.error('Error creating reservation:', error);
+    }
+  };
+
   return {
     cartItems,
     loading,
@@ -80,7 +97,13 @@ export const useCartController = () => {
     updateQuantity,
     removeFromCart,
     clearCart,
+    checkout,
     getCartTotal,
     getCartCount,
+    reservation,
+    buyerName,
+    buyerPhone,
+    setBuyerName,
+    setBuyerPhone,
   };
 };

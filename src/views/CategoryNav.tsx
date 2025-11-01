@@ -14,27 +14,16 @@ export const CategoryNav = ({ categories, selectedCategory, onCategorySelect }: 
   };
 
   return (
-    <nav className="bg-white border-b shadow-sm">
+    <nav className="bg-white border-b shadow-sm" id="catalogo">
       <div className="container mx-auto px-4">
         <div className="flex items-center gap-2 overflow-x-auto py-4 scrollbar-hide">
-          <button
-            onClick={() => onCategorySelect(null)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${
-              selectedCategory === null
-                ? 'bg-emerald-600 text-white'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-            }`}
-          >
-            <Icons.Home size={20} />
-            <span>Todos</span>
-          </button>
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => onCategorySelect(category.id)}
               className={`flex items-center gap-2 px-4 py-2 rounded-lg whitespace-nowrap transition-colors ${
                 selectedCategory === category.id
-                  ? 'bg-emerald-600 text-white'
+                  ? 'bg-brand-blue text-white'
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >

@@ -1,0 +1,9 @@
+{
+  "css.validate": false,
+  "tailwindCSS.enable": true,
+  "tailwindCSS.emmetCompletions": true,
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
+}

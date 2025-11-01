@@ -1,22 +1,58 @@
+import { MapPin, Phone, Clock } from 'lucide-react';
+
 export const HeroSection = () => {
   return (
-    <div className="bg-gradient-to-r from-emerald-500 to-teal-600 text-white py-16">
+    <div className="bg-gradient-to-r from-brand-primary to-brand-accent text-brand-blue py-16" id="inicio">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Tu salud, nuestra prioridad
+              Tu farmacia de confianza en Lontué — atención cercana y profesional.
             </h1>
-            <p className="text-lg mb-6 text-emerald-50">
-              Encuentra todos tus medicamentos, productos de belleza y bienestar en un solo lugar
+            <p className="text-lg mb-6">
+              Venta de medicamentos, cuidado personal y orientación farmacéutica. Encargos y reservas disponibles.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <button className="bg-white text-emerald-600 px-8 py-3 rounded-lg font-bold hover:bg-emerald-50 transition-colors">
-                Ver Ofertas
-              </button>
-              <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-bold hover:bg-white hover:text-emerald-600 transition-colors">
-                Receta Digital
-              </button>
+            <div className="flex flex-wrap gap-3">
+              <a
+                href="https://maps.google.com/?q=Luz%20Pereira%202020%2C%20Lontu%C3%A9%2C%20Molina"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir mapa: Luz Pereira 2020, Lontué"
+                className="inline-flex items-center gap-2 bg-brand-blue text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90"
+              >
+                <MapPin size={16} />
+                <span>Luz Pereira 2020, Lontué</span>
+              </a>
+              <a
+                href="tel:+56975564584"
+                aria-label="Llamar a +56 9 7556 4584"
+                className="inline-flex items-center gap-2 bg-brand-accent text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90"
+              >
+                <Phone size={16} />
+                <span>+56 9 7556 4584</span>
+              </a>
+              <a
+                href="https://maps.google.com/?q=Valdivia%20157%2C%20Sagrada%20Familia%2C%20Maule"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Abrir mapa: Valdivia 157, Sagrada Familia"
+                className="inline-flex items-center gap-2 bg-brand-blue text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90"
+              >
+                <MapPin size={16} />
+                <span>Valdivia 157, Sagrada Familia</span>
+              </a>
+              <a
+                href="tel:+56979002753"
+                aria-label="Llamar a +56 9 7900 2753"
+                className="inline-flex items-center gap-2 bg-brand-accent text-white px-4 py-2 rounded-lg font-semibold hover:opacity-90"
+              >
+                <Phone size={16} />
+                <span>+56 9 7900 2753</span>
+              </a>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-lg font-semibold bg-white text-brand-blue">
+                <Clock size={16} />
+                <span>Lunes a sábado 9:00–20:00</span>
+              </span>
             </div>
           </div>
           <div className="hidden md:block">

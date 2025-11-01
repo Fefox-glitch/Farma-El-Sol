@@ -1,3 +1,53 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Paleta institucional y estilos base */
+@layer base {
+  :root {
+    --color-primary: #FFCC00; /* Amarillo Sol */
+    --color-accent: #FF8A00;  /* Naranja */
+    --color-danger: #D32F2F;  /* Rojo */
+    --color-blue: #003A90;    /* Azul enlaces/textos importantes */
+    --color-white: #FFFFFF;   /* Fondo */
+    --color-dark: #222222;    /* Texto principal */
+  }
+
+  html {
+    font-family: 'Inter', ui-sans-serif, system-ui, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif;
+  }
+
+  body {
+    color: var(--color-dark);
+    background-color: var(--color-white);
+  }
+
+  /* Los enlaces heredan el color del contenedor para evitar contrastes erróneos */
+  a {
+    color: inherit;
+  }
+}
+
+/* Utilidades de marca (por si se requiere fuera de Tailwind) */
+@layer utilities {
+  .bg-brand-primary { background-color: var(--color-primary); }
+  .bg-brand-accent { background-color: var(--color-accent); }
+  .bg-brand-blue { background-color: var(--color-blue); }
+  .text-brand-primary { color: var(--color-primary); }
+  .text-brand-accent { color: var(--color-accent); }
+  .text-brand-blue { color: var(--color-blue); }
+  .text-brand-danger { color: var(--color-danger); }
+}
+/* Estilos de impresión del comprobante */
+@media print {
+  body * { visibility: hidden; }
+  .printable, .printable * { visibility: visible; }
+  .printable {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    padding: 16px;
+    background: white;
+  }
+}
